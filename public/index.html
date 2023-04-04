@@ -27,15 +27,15 @@
       data: $(this).serialize(),
       dataType: 'json',
       success: function(result) {
-        var success = '<h2 class="success">✅️ Transaction successful ✅️ :</h2><pre>' + JSON.stringify(result, null, 2) + '</pre>';
+        var success = '<h2 class="success">✅ Transaction successful ✅ :</h2><pre>' + JSON.stringify(result, null, 2) >
         $('#result').html(success);
       },
       error: function(error) {
-        var failed = '<h2 class="failed">❌️ Transaction failed ❌️ :</h2><pre>' + JSON.stringify(error.responseJSON, null, 2) + '</pre>';
+        var failed = '<h2 class="failed">❌ Transaction failed ❌ :</h2><pre>' + JSON.stringify(error.responseJSON, nul>
         $('#result').html(failed);
       }
     });
-  });
+});
 });
 
     </script>
