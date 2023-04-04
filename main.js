@@ -1,8 +1,6 @@
 const crypto = require('crypto');
 const express = require('express');
-const axios = require('axios');
-require('dotenv').config();
-const { ENDPOINT } = process.env
+const { exec } = require('child_process');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,26 +17,21 @@ function generateRandMessage(seed) {
   return rand.slice(1, lenMsg + 1).toString('hex');
 }
 
-app.post('/', async (req, res) => {
+app.post('/', (req, res) => {
   const seed = parseInt(req.body.seed);
   if (seed && !isNaN(seed)) {
     const namespace_id = generateRandHexEncodedNamespaceID(seed);
     const data = generateRandMessage(seed);
     console.log(namespace_id, data)
-    try {
-      const result = await axios.post(ENDPOINT + '/submit_pfb', {
-        namespace_id,
-        data,
-        gas_limit: '80000',
-        fee: '2000',
-      });
-      console.log(result.status, result.data)
-      res.json(result);
-      res.status(result.status).send(result.data);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
-    }
+    const command = `curl --header "Content-Type: application/json" --request POST --data '{"namespace_id":"${namespace>
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+      res.send(stdout);
+    });
   } else {
     res.status(400).json({ message: 'Invalid request' });
   }
