@@ -13,15 +13,24 @@
   </header>
   <body>
       <h3>PayForPlob Celestia TX With Random Namespace Generator By Seed Number</h3>
-    <form id="form" method="post">
-      <input type="number" name="seed" placeholder="Enter seed random number" required>
-      <button type="submit" style="color: #7a2bf9;">submit</button>
+    
+      <form id="form" method="post">
+      
+        <label for="namespace_id" style="font-family:Arial, Helvetica, sans-serif; color: #ffffff;">Namespace ID:</label>
+      
+        <input type="text" id="namespace_id" name="namespace_id" /><br />
+      
+        <button type="button" onclick="generateNamespaceId()">Generate</button><br />
+      
+        <button type="submit" style="color: #7a2bf9;">submit</button>
+      
     </form>
 
     <div id="result"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+       
       $(function() {
   $('#form').submit(function(event) {
     event.preventDefault();
@@ -35,12 +44,17 @@
         $('#result').html(success);
       },
       error: function(error) {
-        var failed = '<h2 class="failed">❌ Transaction failed ❌ :</h2><pre>' + JSON.stringify(error.responseJSON, nul>
+        var failed = '<h2 class="failed">❌️ Transaction failed ❌️ :</h2><pre>' + error.responseText + '</pre>';
         $('#result').html(failed);
       }
     });
 });
 });
+
+function generateNamespaceId() {
+        var namespaceId = Math.floor(Math.random() * 1000000000).toString(16);
+        document.getElementById("namespace_id").value = namespaceId;
+      }
 
     </script>
   </body>

@@ -1,12 +1,25 @@
 const crypto = require('crypto');
 const { exec } = require('child_process');
 const express = require('express');
+const { randomBytes } = require('crypto');
+
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
+
+function generateRandHexString(length) {
+  const bytes = randomBytes(length / 2);
+  return bytes.toString('hex');
+}
+
+function generateRandMessage() {
+  const length = Math.floor(Math.random() * 50) + 1;
+  const bytes = randomBytes(length);
+  return bytes.toString('hex');
+}
 
 function generateRandHexEncodedNamespaceID(seed) {
   const rand = crypto.createHash('sha3-256').update(seed.toString()).digest();
