@@ -1,7 +1,5 @@
-const crypto = require('crypto');
 const { exec } = require('child_process');
 const express = require('express');
-const { randomBytes } = require('crypto');
 
 
 const app = express();
@@ -10,33 +8,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-function generateRandHexString(length) {
-  const bytes = randomBytes(length / 2);
-  return bytes.toString('hex');
-}
-
-function generateRandMessage() {
-  const length = Math.floor(Math.random() * 50) + 1;
-  const bytes = randomBytes(length);
-  return bytes.toString('hex');
-}
-
-function generateRandHexEncodedNamespaceID(seed) {
-  const rand = crypto.createHash('sha3-256').update(seed.toString()).digest();
-  return rand.slice(0, 8).toString('hex');
-}
-
-function generateRandMessage(seed) {
-  const rand = crypto.createHash('sha3-256').update(seed.toString()).digest();
-  const lenMsg = rand[0] % 100;
-  return rand.slice(1, lenMsg + 1).toString('hex');
-}
 
 app.post('/', (req, res) => {
-  const seed = parseInt(req.body.seed);
-  if (!isNaN(seed)) {
-    const namespace_id = generateRandHexEncodedNamespaceID(seed);
-    const data = generateRandMessage(seed);
+  const namespace_id = req.body.namespace_id;
+  const data = req.body.message;
+  if (namespace_id && data) {
     const command = `curl --header "Content-Type: application/json" --request POST --data '{"namespace_id":"${namespace_id}","data":"${data}","gas_limit": 80000,"fee":2000}' http://localhost:26659/submit_pfb`;
     exec(command, (error, stdout, stderr) => {
       if (error) {
@@ -44,7 +20,6 @@ app.post('/', (req, res) => {
         res.status(500).send('Internal Server Error');
         return;
       }
-      console.log(stdout)
       try {
         const parsedOutput = JSON.parse(stdout);
         const { height, txhash } = parsedOutput;
@@ -57,7 +32,8 @@ app.post('/', (req, res) => {
           signer,
           parsedOutput,
         };
-        res.status(200).json(result)
+        console.log(result)
+        res.status(200).send(JSON.stringify(result, null, 2))
       } catch (e) {
         res.status(500).json(`Namespace ID: ${namespace_id}\nData Hex: ${data}\n\n\n${stdout}`);
         console.log(e)
@@ -68,6 +44,6 @@ app.post('/', (req, res) => {
   }
 });
 
-app.listen(3010, () => {
-  console.log('Server is listening on port 3000');
+app.listen(4010, () => {
+  console.log('Server is listening on port 4010');
 });
