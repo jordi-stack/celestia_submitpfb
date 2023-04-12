@@ -29,9 +29,9 @@ sudo apt install git nodejs -y
 ``` bash
 apt install npm
 
-apt install child_process
+npm install child_process
 
-apt install express
+npm install express
 ```
 
 ```bash
