@@ -3,7 +3,10 @@ Guide for use generator Pay For Blob Celestia
 Link Demo : http://65.21.232.160:4010/
 
 
-## Main 
+## To ensure that this UI works properly, make sure to run the UI server on the Celestia node gateway server with port 26659 and sufficient balance.
+
+
+## Generate 
 
 ![Screenshot 2023-04-12 at 04 49 58](https://user-images.githubusercontent.com/65535542/231295828-bee0c644-1f57-4461-8a4c-750fcb826fd6.png)
 
@@ -23,6 +26,10 @@ sudo apt install git nodejs -y
 
 ``` bash
 apt install npm
+
+apt install child_process
+
+apt install express
 ```
 
 ```bash
