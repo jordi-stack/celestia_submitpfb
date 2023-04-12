@@ -3,7 +3,7 @@ Guide for use generator Pay For Blob Celestia
 Link Demo : http://65.21.232.160:4010/
 
 
-## To ensure that this UI works properly, make sure to run the UI server on the Celestia node gateway server with port 26659 and sufficient balance.
+### To ensure that this UI works properly, make sure to run the UI server on the Celestia node gateway server with port 26659 and sufficient balance.
 
 
 ## Generate 
