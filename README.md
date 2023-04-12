@@ -19,7 +19,9 @@ To ensure that this UI works properly, make sure to run the UI server on the Cel
 Step For Installation
 
 
-```bash curl http://deb.nodesource.com/setup_lts.x | sudo bash -
+```bash 
+curl http://deb.nodesource.com/setup_lts.x | sudo bash -
+
 sudo apt install git nodejs -y
 
 ```
