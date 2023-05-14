@@ -1,14 +1,9 @@
-/* Font family */
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-
-
-/* Body styles */
 body {
-  font-family: 'Poppins';
-  color: purple;
-  background-color: #f2e6ff;
-  display: grid;
+  font-family: 'Hers';
+  color: rgb(255, 255, 255);
+  background-color: #313131;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -22,7 +17,7 @@ a {
 h3 {
   display: flex;
   font-family: 'Poppins';
-  color: #7a2bf9;
+  color: #000000;
   margin-bottom: 50px;
   align-items: center;
   justify-content: center;
@@ -36,7 +31,6 @@ h1 {
  
 }
 
-/* Form styles */
 form {
   display: flex;
   flex-direction: column;
@@ -44,10 +38,40 @@ form {
   width: 100%;
   max-width: 600px;
   padding: 40px;
-  background-color: #7a2bf9;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px black;
+  background-color: #7a2bf900;
+  border-radius: 50px;
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #00ccff;
+  border: 1px solid #00ff00;
+  position: relative;
 }
+
+
+
+form::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, #0080ff, #000000);
+  z-index: -1;
+  animation: neon-border 1.5s ease-in-out infinite;
+}
+
+@keyframes neon-border {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
 
 form input, button {
   width: 100%;
@@ -57,28 +81,26 @@ form input, button {
   border-radius: 10px;
   border: none;
   background-color: #f2e6ff;
-  color: #7a2bf9;
+  color: #2bc9f9;
   font-size: 18px;
   font-weight: 500;
-  box-shadow: 0 5px 10px #7a2bf9;
+  box-shadow: 0 5px 10px #09b3e7;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 form input {
   max-width: 500px;
-  color: #7a2bf9;
+  color: #000000;
 }
 
 
-
-/* Result styles */
 .success {
   color: #00cc00;
 }
 
 .failed {
-  color: #ff0000;
+  color: #ca0505;
 }
 
 #result h2 {
@@ -117,35 +139,6 @@ form input:focus {
 }
 
 
-
-body {
-  font-family: Helvetica;
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  color: #000;
-}
-.site-header { 
-  border-bottom: 1px solid #ccc;
-  padding: .5em 1em;
-  margin-left: -270px;
-  margin-right: -270px;
-  background-color: #7a2bf9;
-
-}
-
-.site-header::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.site-identity {
-  float: left;
-}
-
 .site-identity h1 {
   font-size: 1.5em;
   margin: .7em 0 .3em 0;
@@ -171,4 +164,48 @@ a {
 .site-navigation li {
   display: inline-block;
   margin: 1.4em 1em 1em 1em;
+}
+
+.button-55 {
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+label[for="message"] {
+  color: white;
 }
