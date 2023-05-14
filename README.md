@@ -1,18 +1,22 @@
-### Guide for use generator Pay For Blob Celestia
+### How to use the generator for Blob Celestia Pay
 
-Link Demo : http://65.21.232.160:4010/
-
-
-To ensure that this UI works properly, make sure to run the UI server on the Celestia node gateway server with port 26659 and sufficient balance.
+Demo Link: 
+http://185.207.251.195:4001
 
 
-## Generate 
+Make sure to run the UI server on the Celestia node gateway server with port 26659 and enough balance to guarantee that this UI functions properly.
 
-![Screenshot 2023-04-12 at 04 49 58](https://user-images.githubusercontent.com/65535542/231295828-bee0c644-1f57-4461-8a4c-750fcb826fd6.png)
+----
+Here is the result:
+
+
+## UI PFB
+
+![My Image](https://i.imgur.com/OKglB84.jpg)
 
 
 ## Result For PFB
-![Screenshot 2023-04-12 at 04 49 58](https://user-images.githubusercontent.com/65535542/231295910-4c1f5974-6270-48e3-82b2-cab605b53943.png)
+![My Image](https://i.imgur.com/HwcyACF.jpg)
 
 
 
@@ -26,22 +30,34 @@ sudo apt install git nodejs -y
 
 ```
 
+Instal Dependencies
 ``` bash
-apt install npm
+sudo apt install npm
 
 npm install child_process
 
 npm install express
 ```
 
+Cloning the repository
 ```bash
 git clone https://github.com/jordi-stack/celestia_submitpfb
 ``` 
 
+Head to folder that cloned above
 ```bash
-cd celestia_pfb
+cd celestia_submitpfb
 ```
 
+Run the module
 ```
 node main.js
 ```
+
+Finally now you are success run the module of PFB
+if you generate and submit tx, it will apear on your VPS screen
+
+![My Image](https://i.imgur.com/2ry9SeX.jpg)
+---
+---
+Thank you.
