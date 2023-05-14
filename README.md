@@ -35,7 +35,7 @@ npm install express
 ```
 
 ```bash
-git clone https://github.com/Dexanode/celestia_pfb
+git clone https://github.com/jordi-stack/celestia_submitpfb
 ``` 
 
 ```bash
